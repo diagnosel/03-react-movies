@@ -2,6 +2,9 @@
 
 React homework 2. Search movies with TMDB and open a movie details modal.
 
+- [Source code](https://github.com/AurikaSa/03-react-movies)
+- [Live app](https://03-react-movies-plum-omega.vercel.app/)
+
 ## Run locally
 
 Use Node.js 22 and npm. Local development uses 22.13.0, and Vercel uses Node.js 22.
@@ -69,7 +72,22 @@ Browser evidence is in `output/playwright/hw2/` and is ignored by Git. The origi
 - [x] Run build, lint, formatting, and browser checks with controlled API data.
 - [x] Verify a real TMDB search with the user's token.
 - [x] Create the public [`03-react-movies` GitHub repository](https://github.com/AurikaSa/03-react-movies).
-- [ ] Deploy to Vercel and verify the live page.
+- [x] Deploy to [Vercel](https://03-react-movies-plum-omega.vercel.app/) and verify the live page.
 - [ ] Submit both links on the course portal manually. Wait at least 5 minutes after repository changes, as the assignment asks.
 
-GitHub and Vercel publication is authorized. Course submission must be done manually.
+GitHub and Vercel publication is complete. Course submission must be done manually.
+
+## Production checks
+
+The public Vercel URL opens without login. Checked on 24 November 2026:
+
+- Real searches for `Interstellar` and `Inception` show results. A new search clears the old results and shows the loading state.
+- Posters and the selected movie backdrop load from TMDB.
+- The modal shows the movie details. Escape closes it and restores scrolling.
+- A query with no matches shows `No movies found for your request.` and leaves no old cards.
+- At 390px, the page and modal fit the viewport without horizontal overflow. The temporary viewport override was reset after the check.
+- No console errors or warnings were captured in these production checks.
+
+`VITE_TMDB_TOKEN` is configured in the Vercel Production environment. The local `.env` and generated files are excluded from GitHub and Vercel source uploads.
+
+This project was deployed through Vercel CLI. GitHub is not connected to automatic Vercel deployments. To publish later changes, run `vercel deploy --prod --scope zendaya` from this project after updating GitHub.
