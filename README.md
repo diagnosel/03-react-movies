@@ -2,7 +2,7 @@
 
 React homework 2. Search movies with TMDB and open a movie details modal.
 
-- [Source code](https://github.com/AurikaSa/03-react-movies)
+- [Source code](https://github.com/diagnosel/03-react-movies)
 - [Live app](https://03-react-movies-plum-omega.vercel.app/)
 
 ## Run locally
