@@ -38,7 +38,16 @@ This change does not revoke old token copies in earlier deployments. Token rotat
 
 ## Checks
 
-The previous version was checked for search, empty results, error state and modal closing. Server proxy checks are in progress.
+Verified on 2026-11-28:
+
+- All 9 server proxy tests passed.
+- TypeScript/build, lint and formatting checks passed.
+- Live mobile and desktop search and the movie modal worked. Empty queries did not send requests. No normal-flow console errors or warnings were captured.
+- Live API checks passed for search (200), invalid input (400) and unsupported methods (405).
+- Browser requests used `/api/movies` without an Authorization header. No direct browser request went to the TMDB API.
+- The actual token was absent from the current public JavaScript and checked API responses for both `03-react-movies` and `04-react-query`.
+
+The new server version is deployed. Rotation of the previously exposed token is still pending. Removing the old unused Vercel variable also needs explicit approval.
 
 Run `npm test`, `npm run build`, `npm run lint` and `npm run format:check`. The tests use Node.js's built-in runner. Node.js 22.13 prints an experimental warning for TypeScript stripping.
 
