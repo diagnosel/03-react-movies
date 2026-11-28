@@ -34,7 +34,7 @@ The Vercel function uses the server-only `TMDB_TOKEN` Secret. The browser does n
 
 The API accepts only GET with a bounded query and optional page. It has a fixed upstream destination, a 10-second timeout, short success caching and safe errors. Error responses do not include request headers or Axios error details. The search endpoint remains public and does not add user authentication or rate limiting.
 
-This change does not revoke old token copies in earlier deployments. Token rotation is a separate step.
+The previously exposed token has been replaced. TMDB accepted the new token (HTTP 200) and rejected the previous token (HTTP 401). Old builds may still contain the revoked value, but it no longer authenticates.
 
 ## Checks
 
@@ -47,7 +47,7 @@ Verified on 2026-11-28:
 - Browser requests used `/api/movies` without an Authorization header. No direct browser request went to the TMDB API.
 - The actual token was absent from the current public JavaScript and checked API responses for both `03-react-movies` and `04-react-query`.
 
-The new server version is deployed. Rotation of the previously exposed token is still pending. Removing the old unused Vercel variable also needs explicit approval.
+Both projects were deployed with the new server Secret on 2026-11-28. Live search, the movie modal and the public asset checks passed after rotation. The old unused Vercel variable contains the revoked value. Removing that variable still needs explicit approval.
 
 Run `npm test`, `npm run build`, `npm run lint` and `npm run format:check`. The tests use Node.js's built-in runner. Node.js 22.13 prints an experimental warning for TypeScript stripping.
 
