@@ -9,7 +9,9 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "dev:full": "vercel dev --listen 3001",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1",
