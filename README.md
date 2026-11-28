@@ -47,7 +47,7 @@ Verified on 2026-11-28:
 - Browser requests used `/api/movies` without an Authorization header. No direct browser request went to the TMDB API.
 - The actual token was absent from the current public JavaScript and checked API responses for both `03-react-movies` and `04-react-query`.
 
-Both projects were deployed with the new server Secret on 2026-11-28. Live search, the movie modal and the public asset checks passed after rotation. The old unused Vercel variable contains the revoked value. Removing that variable still needs explicit approval.
+Both projects were deployed with the new server Secret on 2026-11-28. Live search, the movie modal and the public asset checks passed after rotation. The old unused VITE_TMDB_TOKEN variable was removed from Production with approval. The server TMDB_TOKEN Secret remains. A live search check passed after removal.
 
 Run `npm test`, `npm run build`, `npm run lint` and `npm run format:check`. The tests use Node.js's built-in runner. Node.js 22.13 prints an experimental warning for TypeScript stripping.
 
